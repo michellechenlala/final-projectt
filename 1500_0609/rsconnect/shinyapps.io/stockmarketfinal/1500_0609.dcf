@@ -1,0 +1,12 @@
+name: 1500_0609
+title: 1500_0609
+username:
+account: stockmarketfinal
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2437829
+bundleId: 3253295
+url: https://stockmarketfinal.shinyapps.io/1500_0609/
+when: 1591815626.78863
+asMultiple: FALSE
+asStatic: FALSE
