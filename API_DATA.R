@@ -1,0 +1,22 @@
+library(alphavantager)
+library(dplyr)
+av_api_key("CX24NZBQUYVSZHRO")
+MSFT_raw <- av_get(symbol = "MSFT", av_fun = "TIME_SERIES_DAILY", outputsize = "full")
+VRTX_raw <- av_get(symbol = "VRTX", av_fun = "TIME_SERIES_DAILY", outputsize = "full")
+NSC_raw <- av_get(symbol = "NSC", av_fun = "TIME_SERIES_DAILY", outputsize = "full")
+OMC_raw <- av_get(symbol = "OMC", av_fun = "TIME_SERIES_DAILY",  outputsize = "full")
+IBM_raw <- av_get(symbol = "IBM", av_fun = "TIME_SERIES_DAILY", outputsize = "full")
+
+MSFT <- MSFT_raw %>% mutate(Name="MSFT") %>% rename(date = timestamp)
+VRTX <- VRTX_raw %>% mutate(Name="VRTX") %>% rename(date = timestamp)
+NSC <- NSC_raw %>% mutate(Name="NSC") %>% rename(date = timestamp)
+OMC <- OMC_raw %>% mutate(Name="OMC") %>% rename(date = timestamp)
+IBM <- IBM_raw %>% mutate(Name="IBM") %>% rename(date = timestamp)
+
+MSFT$date <- as.character(MSFT$date)
+IBM$date <- as.character(IBM$date)
+VRTX$date <- as.character(VRTX$date)
+NSC$date <- as.character(NSC$date)
+OMC$date <- as.character(OMC$date)
+
+stock_data <- rbind(MSFT, IBM, VRTX, NSC, OMC)
